@@ -34,13 +34,17 @@ const ENV_LIST = [
  
 ]
 
+
+
+
 const argv = JSON.parse(process.env.npm_config_argv).original || process.argv
 const HOST_ENV = argv[2] ? argv[2].replace(/[^a-z]+/ig,"") : ''
 //没有设置环境，则默认为第一个
 const HOST_CONF = HOST_ENV  ? ENV_LIST.find(item => item.envName === HOST_ENV) : ENV_LIST[0]
+
 // 把环境常量挂载到process.env方便客户端使用
 process.env.BASE_URL = HOST_CONF.baseUrl
-// process.env.ENV_NAME = HOST_CONF.envName
+process.env.ENV_NAME = HOST_CONF.envName
 
 module.exports.HOST_CONF = HOST_CONF
 module.exports.ENV_LIST = ENV_LIST

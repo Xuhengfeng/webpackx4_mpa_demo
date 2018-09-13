@@ -3,6 +3,7 @@ const webpack = require("webpack");
 const glob = require("glob");
 
 require("./env-config");
+console.log(require("./env-config"))
 
 // 分离css
 
@@ -112,6 +113,5 @@ Object.keys(entryObj).forEach(element => {
 
 //自动生成html模板
 htmlArray.forEach((element) => {
-	console.log(element)
 	module.exports.plugins.push(new htmlWebpackPlugin(getHtmlConfig(element._html, element.chunks)));
 })
